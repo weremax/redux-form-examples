@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 import { persistReducer } from 'redux-persist';
 import PostsReducer from './reducer_posts';
 import NumbReducer from './reducer_numb';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage/session';
 
 const rootPersistConfig = {
   key: 'root',
