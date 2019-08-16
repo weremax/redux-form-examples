@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/integration/react';
 import reducers from './reducers';
 import PostIndex from './components/posts_index';
 import PostsNew from './components/posts_new';
@@ -13,10 +11,16 @@ import PostsShow from './components/posts_show';
 import Numb from './components/numb';
 import './index.css';
 
+// adding persistance setup
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react';
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 let store = createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 let persistor = persistStore(store);
+// end persistance setup
+// Note the PersistGate in the code below
 
 ReactDOM.render(
   <Provider store={store}>
