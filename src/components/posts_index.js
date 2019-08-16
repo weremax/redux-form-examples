@@ -34,6 +34,7 @@ class PostsIndex extends Component {
                 <ul className="list-group">
                     {this.renderPosts()}
                 </ul>
+                <Link to="/numb">Numb</Link>
             </div>
         );
     }

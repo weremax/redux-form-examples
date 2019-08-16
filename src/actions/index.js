@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCH_POSTS = 'fetch_posts';
 export const FETCH_POST = 'fetch_post';
+export const GET_NUMB = 'get_numb';
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=cblankenship77901'
@@ -58,4 +59,14 @@ export function deletePost(id, callback) {
         });
     }
     
+}
+
+export function getNumb(value) {
+    console.log('--actions');
+    return dispatch => {
+        dispatch({
+            type: GET_NUMB,
+            payload: value
+        })
+    }
 }
