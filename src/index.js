@@ -15,7 +15,7 @@ import './index.css';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-let store = createStoreWithMiddleware(reducers);
+let store = createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 let persistor = persistStore(store);
 
 ReactDOM.render(
