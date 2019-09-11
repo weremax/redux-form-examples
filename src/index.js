@@ -10,6 +10,7 @@ import PostsNew from './components/posts_new';
 import PostsShow from './components/posts_show';
 import Numb from './components/numb';
 import FormTest from './components/formTest';
+import FieldArraysForm from './components/FieldArraysForm';
 import './index.css';
 
 // adding persistance setup
@@ -30,6 +31,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/formTest" component={FormTest} />
+          <Route path="/FieldArraysForm" component={FieldArraysForm} />
           <Route path="/numb" component={Numb} />
           <Route path="/posts/new" component={PostsNew} />
           <Route path="/posts/:id" component={PostsShow} />

@@ -22,7 +22,7 @@ class FormTest extends Component {
     }
 
     onSubmit(values) {
-        console.log(values);
+        console.log('onSubmit', values);
     }
 
     render() {
@@ -32,14 +32,13 @@ class FormTest extends Component {
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 Form Test
-                { 
+                {
                     details.map((d, index) => (
                         <Fragment>
                             <Field
                                 name={`details[${index}]['contractEffective']`}
                                 component={RenderField}
                                 label={`Effective Date`}
-                                id={`details.${index}.contractEffective`}
                             />
                             <Field
                                 name={`details[${index}]['contractEnd']`}
@@ -48,7 +47,7 @@ class FormTest extends Component {
                             />
                         </Fragment>
                     ))
-                }
+                    }
                 <Field
                     name='data'
                     component={RenderField}
