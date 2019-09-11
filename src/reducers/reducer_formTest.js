@@ -1,19 +1,19 @@
 const INITIAL_STATE = {
-    details: [
+    contractEffectiveDetails: [
         {
-            contractEffective: '',
-            contractEnd: '',
+            contractEffectiveDate: '',
+            contractEndDate: '',
         },
         {
-            contractEffective: 'test',
-            contractEnd: '',
+            contractEffectiveDate: 'test',
+            contractEndDate: '',
         },
         {
-            contractEffective: '',
-            contractEnd: '',
+            contractEffectiveDate: '',
+            contractEndDate: '',
         },
     ],
-    data: 'welcome'
+    data: ''
 };
 
 export default function(state = INITIAL_STATE, action) {

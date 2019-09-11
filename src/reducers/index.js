@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
   posts: PostsReducer,
   numb: persistReducer(numbPersistConfig, NumbReducer),
   form: formReducer,
-  formTest: formTestReducer
+  docgen: formTestReducer
 });
 
 export default rootReducer;

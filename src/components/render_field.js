@@ -3,7 +3,15 @@ import React, { Component } from 'react';
 export default class RenderField extends Component {
     render() {
         const { input, label, meta: { touched, error } } = this.props;
-        const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+        console.warn('---',
+            {
+                label: label,
+                input: input,
+                touched: touched,
+                error: error
+            }
+        );
+        const className = `form-group ${touched || error ? 'has-danger' : ''}`;
         return (
             <div className={className}>
             <label>{label}</label>

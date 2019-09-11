@@ -4,8 +4,8 @@ const validate = values => {
 
     console.log('--values', values);
 
-    if (values.details) {
-        values.details.forEach((detail, detailIndex) => {
+    if (values.contractEffectiveDetails) {
+        values.contractEffectiveDetails.forEach((detail, detailIndex) => {
             let packError = {};
             Object.keys(detail).forEach((key) => {
                 if (!detail[key]) {
@@ -21,7 +21,7 @@ const validate = values => {
         errors.data = 'Required';
     }
 
-    errors.details = detailsError;
+    errors.contractEffectiveDetails = detailsError;
     console.log('---- errors', errors);
     return errors;
 }

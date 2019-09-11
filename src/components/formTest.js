@@ -13,7 +13,7 @@ class FormTest extends Component {
     }
 
     componentDidMount() {
-        this.props.initialize(this.props.formTest);
+        this.props.initialize(this.props.docgen);
     }
 
     changer = e => {
@@ -26,22 +26,22 @@ class FormTest extends Component {
     }
 
     render() {
-        const { formTest, handleSubmit } = this.props;
-        const { details } = formTest;
+        const { docgen, handleSubmit } = this.props;
+        const { contractEffectiveDetails } = docgen;
 
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 Form Test
                 {
-                    details.map((d, index) => (
+                    contractEffectiveDetails.map((d, index) => (
                         <Fragment>
                             <Field
-                                name={`details[${index}]['contractEffective']`}
+                                name={`contractEffectiveDetails[${index}]['contractEffectiveDate']`}
                                 component={RenderField}
                                 label={`Effective Date`}
                             />
                             <Field
-                                name={`details[${index}]['contractEnd']`}
+                                name={`contractEffectiveDetails[${index}]['contractEndDate']`}
                                 component={RenderField}
                                 label={`End Date ${index + 1}`}
                             />
@@ -59,8 +59,8 @@ class FormTest extends Component {
     }
 }
 
-function mapStateToProps({ formTest }) {
-    return { formTest };
+function mapStateToProps({ docgen }) {
+    return { docgen };
 }
 
 export default reduxForm({
