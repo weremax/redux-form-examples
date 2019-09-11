@@ -2,16 +2,17 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import PostsReducer from './reducer_posts';
 import NumbReducer from './reducer_numb';
+import formTestReducer from './reducer_formTest';
 
 // adding persistance setup
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session';
 
-const rootPersistConfig = {
+/*const rootPersistConfig = {
   key: 'root',
   storage: storage,
   blacklist: ['numb']
-}
+}*/
 
 const numbPersistConfig = {
   key: 'numb',
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   // state: (state = {}) => state
   posts: PostsReducer,
   numb: persistReducer(numbPersistConfig, NumbReducer),
-  form: formReducer
+  form: formReducer,
+  formTest: formTestReducer
 });
 
-export default persistReducer(rootPersistConfig, rootReducer);
+export default rootReducer;

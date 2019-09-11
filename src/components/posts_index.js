@@ -41,7 +41,6 @@ class PostsIndex extends Component {
 }
 
 function mapStateToProps(state) {
-    console.warn('index', state);
     return { posts: state.posts };
 }
 

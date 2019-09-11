@@ -9,6 +9,7 @@ import PostIndex from './components/posts_index';
 import PostsNew from './components/posts_new';
 import PostsShow from './components/posts_show';
 import Numb from './components/numb';
+import FormTest from './components/formTest';
 import './index.css';
 
 // adding persistance setup
@@ -28,6 +29,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
+          <Route path="/formTest" component={FormTest} />
           <Route path="/numb" component={Numb} />
           <Route path="/posts/new" component={PostsNew} />
           <Route path="/posts/:id" component={PostsShow} />
