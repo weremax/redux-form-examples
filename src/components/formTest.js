@@ -2,20 +2,14 @@ import React, { Component } from 'react';
 import { reduxForm, FieldArray, Field /*, change*/ } from 'redux-form';
 import { connect } from 'react-redux';
 import RenderField from './render_field';
-//import validate from './validate';
+import validate from './validate';
 
 let newFields = {
     contractEffectiveDate: '',
     contractEndDate: '',
 };
 
-const validate = values => {
-    const errors = {};
-    if (!values.data) {
-        errors.data = 'Required'
-    }
-    return errors
-}
+
 class FormTest extends Component {
     constructor(props) {
         super(props);
@@ -74,13 +68,14 @@ class FormTest extends Component {
         return (
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 Form Test
-                <FieldArray name="contractEffectiveDetails" component={renderFrame} />
-
                 <Field
-                    name='data'
+                    name='dataField'
                     component={RenderField}
                     label='Data'
                 />
+                {/*<FieldArray name="contractEffectiveDetails" component={renderFrame} />*/}
+
+                
                 <button type="submit" className="btn btn-primary">Sumbit</button>
             </form>
         )
