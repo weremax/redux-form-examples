@@ -1,15 +1,27 @@
-import React, { Component, Fragment } from 'react';
-import { reduxForm/*, change*/ } from 'redux-form';
+import React, { Component } from 'react';
+import { reduxForm, FieldArray, Field /*, change*/ } from 'redux-form';
 import { connect } from 'react-redux';
-import { Field } from 'redux-form';
 import RenderField from './render_field';
-import validate from './validate';
+//import validate from './validate';
 
+let newFields = {
+    contractEffectiveDate: '',
+    contractEndDate: '',
+};
+
+const validate = values => {
+    const errors = {};
+    if (!values.data) {
+        errors.data = 'Required'
+    }
+    return errors
+}
 class FormTest extends Component {
     constructor(props) {
         super(props);
 
         this.changer = this.changer.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -26,28 +38,44 @@ class FormTest extends Component {
     }
 
     render() {
-        const { docgen, handleSubmit } = this.props;
-        const { contractEffectiveDetails } = docgen;
+        const { handleSubmit } = this.props;
+
+        const renderFrame = ({ fields, meta: { touched, error } }) => (
+            <div>
+                <button type="button" onClick={() => {
+                    if (fields.length < 5) {
+                        fields.push(newFields) 
+                    }
+                }}>
+                    Add Dates
+                </button>
+
+                {fields.map((d, index) => {
+                        return (
+                            <div>
+                            <Field
+                                name={`${d}.contractEffectiveDate`}
+                                type="text"
+                                component={RenderField}
+                                label={`Effective Date #${index + 1}`}
+                            />
+                            <Field
+                                name={`${d}.contractEndDate`}
+                                type="text"
+                                component={RenderField}
+                                label={`End Date #${index + 1}`}
+                            />
+                            </div>
+                        )
+                })}
+            </div>
+        )
 
         return (
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <form onSubmit={handleSubmit(this.onSubmit)}>
                 Form Test
-                {
-                    contractEffectiveDetails.map((d, index) => (
-                        <Fragment>
-                            <Field
-                                name={`contractEffectiveDetails[${index}]['contractEffectiveDate']`}
-                                component={RenderField}
-                                label={`Effective Date`}
-                            />
-                            <Field
-                                name={`contractEffectiveDetails[${index}]['contractEndDate']`}
-                                component={RenderField}
-                                label={`End Date ${index + 1}`}
-                            />
-                        </Fragment>
-                    ))
-                    }
+                <FieldArray name="contractEffectiveDetails" component={renderFrame} />
+
                 <Field
                     name='data'
                     component={RenderField}

@@ -10,6 +10,7 @@ import PostsNew from './components/posts_new';
 import PostsShow from './components/posts_show';
 import Numb from './components/numb';
 import FormTest from './components/formTest';
+import SyncValidationForm from './components/SyncValidationForm';
 import './index.css';
 
 // adding persistance setup
@@ -29,6 +30,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
+          <Route path="/SyncValidationForm" component={SyncValidationForm} />
           <Route path="/formTest" component={FormTest} />
           <Route path="/numb" component={Numb} />
           <Route path="/posts/new" component={PostsNew} />

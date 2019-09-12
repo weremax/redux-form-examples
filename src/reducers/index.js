@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import PostsReducer from './reducer_posts';
 import NumbReducer from './reducer_numb';
-import formTestReducer from './reducer_formTest';
+// import formTestReducer from './reducer_formTest';
+import docgenReducer from './reducer_docgen';
 
 // adding persistance setup
 import { persistReducer } from 'redux-persist';
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
   posts: PostsReducer,
   numb: persistReducer(numbPersistConfig, NumbReducer),
   form: formReducer,
-  docgen: formTestReducer
+  // docgen: formTestReducer,
+  docgen: docgenReducer
 });
 
 export default rootReducer;
