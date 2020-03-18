@@ -73,7 +73,7 @@ class FormTest extends Component {
                     component={RenderField}
                     label='Data'
                 />
-                {/*<FieldArray name="contractEffectiveDetails" component={renderFrame} />*/}
+                <FieldArray name="contractEffectiveDetails" component={renderFrame} />
 
                 
                 <button type="submit" className="btn btn-primary">Sumbit</button>
